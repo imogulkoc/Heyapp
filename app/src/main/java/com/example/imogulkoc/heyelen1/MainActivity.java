@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener{
 
     //Spinner içerisine koyacağımız verileri tanımlıyoruz.
     private String[] iller={"","Adana","Adıyaman","Afyonkarahisar","Ağrı", "Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın", "Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis", "Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Iğdır","Isparta","İstanbul","İzmir","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir","Kilis","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak"};
@@ -101,6 +102,7 @@ public class MainActivity extends Activity {
     private Spinner spinnerIlceler;
     private ArrayAdapter<String> dataAdapterForIller;
     private ArrayAdapter<String> dataAdapterForIlceler;
+    private Button save;
 
 
     @Override // Bu metod uygulama açıldığında çalıştırılan metod.
@@ -108,7 +110,8 @@ public class MainActivity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        save= (Button) findViewById(R.id.button1);
+        save.setOnClickListener(this);
 
         //xml kısmında hazırladığımğız spinnerları burda tanımladıklarımızla eşleştiriyoruz.
         spinnerIller = (Spinner) findViewById(R.id.spinner);
@@ -135,7 +138,7 @@ public class MainActivity extends Activity {
                                        int position, long id) {
                 //Hangi il seçilmişse onun ilçeleri adapter'e ekleniyor.
                 if (parent.getSelectedItem().toString().equals(iller[0]))
-                    dataAdapterForIlceler = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, ilceler0[parent.getSelectedItemPosition()]);
+                    dataAdapterForIlceler = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, ilceler0);
                 else if (parent.getSelectedItem().toString().equals(iller[1]))
                     dataAdapterForIlceler = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, ilceler1);
                 else if (parent.getSelectedItem().toString().equals(iller[2]))
@@ -327,5 +330,17 @@ public class MainActivity extends Activity {
         }
 
         );
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button1:
+
+                //buraya database kodlarını yazacaksın
+                //database e göndereceğin bilgileri almayı unutma
+
+                break;
+        }
     }
 }
