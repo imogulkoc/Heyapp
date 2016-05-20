@@ -337,8 +337,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.button1:
 
-                //buraya database kodlarını yazacaksın
-                //database e göndereceğin bilgileri almayı unutma
+                //buraya database kodları
+                //database göndereceğim bilgileri almayı unutma
 
                 break;
         }
